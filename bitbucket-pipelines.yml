@@ -14,12 +14,9 @@ definitions:
           - npm install -g typescript
           - npm i
           - npm run build
-
-  deploy-script: &deploy
-    script:
-      - apt update
-      - apt install -y rsync
-      - rsync -rltgoDzvO -e "ssh -p 22" $BITBUCKET_CLONE_DIR/build/* $REMOTE_USER@$REMOTE_HOST:/$WEBSITE_BIN --delete
+          - apt update
+          - apt install -y rsync
+          - rsync -rltgoDzvO -e "ssh -p 22" $BITBUCKET_CLONE_DIR/build/* $REMOTE_USER@$REMOTE_HOST:/$WEBSITE_BIN --delete
 
 pipelines:
   branches:
@@ -41,8 +38,6 @@ pipelines:
 
     develop:
       - step:
-          <<: *build
-      - step:
           name: Deploy
           deployment: Test
-          <<: *deploy
+          <<: *build          
