@@ -19,7 +19,7 @@ definitions:
     script:
       - apt update
       - apt install -y rsync
-      - rsync -rltgoDzvO -e "ssh -p 22" $BITBUCKET_CLONE_DIR/build $REMOTE_USER@$REMOTE_HOST:/$WEBSITE_BIN --delete
+      - rsync -rltgoDzvO -e "ssh -p 22" $BITBUCKET_CLONE_DIR $REMOTE_USER@$REMOTE_HOST:/$WEBSITE_BIN --delete
 
 pipelines:
   branches:
