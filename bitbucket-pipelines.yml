@@ -1,0 +1,48 @@
+image: python:latest
+
+definitions:
+
+  steps:
+    - step: &build
+        name: Build
+        image: node:16.14
+        caches:
+          - node
+        script:
+          - node --version
+          - npm --version
+          - npm install -g typescript
+          - npm i
+          - npm run build
+
+  deploy-script: &deploy
+    script:
+      - apt update
+      - apt install -y rsync
+      - rsync -rltgoDzvO -e "ssh -p 22" $BITBUCKET_CLONE_DIR/build $REMOTE_USER@$REMOTE_HOST:/$WEBSITE_BIN --delete
+
+pipelines:
+  branches:
+    master:
+      - step:
+          <<: *build
+      - step:
+          name: Deploy
+          deployment: Production
+          <<: *deploy
+
+    staging:
+      - step:
+          <<: *build
+      - step:
+          name: Deploy
+          deployment: Staging
+          <<: *deploy
+
+    develop:
+      - step:
+          <<: *build
+      - step:
+          name: Deploy
+          deployment: Test
+          <<: *deploy
