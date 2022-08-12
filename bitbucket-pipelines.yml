@@ -12,7 +12,6 @@ definitions:
           - node --version
           - npm --version
           - npm install -g typescript
-          - cd $BITBUCKET_CLONE_DIR
           - npm i
           - npm run build
 
