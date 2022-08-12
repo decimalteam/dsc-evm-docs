@@ -1,35 +1,39 @@
-# This is an example Starter pipeline configuration
-# Use a skeleton to build, test and deploy using manual and parallel steps
-# -----
-# You can specify a custom docker image from Docker Hub as your build environment.
+image: python:latest
 
-image: atlassian/default-image:3
+definitions:
+
+  steps:
+    - step: &build
+        name: Build
+        image: node:16.14
+        caches:
+          - node
+        script:
+          - node --version
+          - npm --version
+          - npm install -g typescript
+          - npm i
+          - npm run build
+          - apt update
+          - apt install -y rsync
+          - rsync -rltgoDzvO -e "ssh -p 22" $BITBUCKET_CLONE_DIR/build/* $REMOTE_USER@$REMOTE_HOST:/$WEBSITE_BIN --delete
 
 pipelines:
-  default:
-    - parallel:
+  branches:
+    master:
       - step:
-          name: 'Build and Test'
-          script:
-            - echo "Your build and test goes here..."
+          name: Deploy
+          deployment: Production
+          <<: *build
+          
+    staging:
       - step:
-          name: 'Lint'
-          script:
-            - echo "Your linting goes here..."
-      - step:
-          name: 'Security scan'
-          script:
-            - echo "Your security scan goes here..."
+          name: Deploy
+          deployment: Staging
+          <<: *build
 
-    # The following deployment steps will be executed for each pipeline run. To configure your steps and conditionally deploy see https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/
-    - step:
-        name: 'Deployment to Staging'
-        deployment: staging
-        script:
-          - echo "Your deployment to staging script goes here..."
-    - step:
-        name: 'Deployment to Production'
-        deployment: production
-        trigger: 'manual'
-        script:
-          - echo "Your deployment to production script goes here..."
+    develop:
+      - step:
+          name: Deploy
+          deployment: Test
+          <<: *build          
