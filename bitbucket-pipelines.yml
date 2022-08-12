@@ -22,19 +22,15 @@ pipelines:
   branches:
     master:
       - step:
-          <<: *build
-      - step:
           name: Deploy
           deployment: Production
-          <<: *deploy
-
-    staging:
-      - step:
           <<: *build
+          
+    staging:
       - step:
           name: Deploy
           deployment: Staging
-          <<: *deploy
+          <<: *build
 
     develop:
       - step:
