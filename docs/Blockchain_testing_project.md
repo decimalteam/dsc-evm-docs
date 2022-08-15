@@ -1,3 +1,8 @@
+---
+sidebar_position: 4
+#position in left-hand side corner
+---
+
 # Blockchain testing project
 
 ## Using this Project
