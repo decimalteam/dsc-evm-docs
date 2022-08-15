@@ -63,18 +63,23 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
-          // {
-          //   type: 'doc',
-          //   docId: 'intro',
-          //   position: 'left',
-          //   label: 'Tutorial',
-          // },
-          // {to: '/blog', label: 'Blog', position: 'left'},
-          // {
-          //   href: 'https://github.com/facebook/docusaurus',
-          //   label: 'GitHub',
-          //   position: 'right',
-          // },
+          {
+            type: 'doc',
+            docId: 'intro',
+            position: 'left',
+            label: 'Useful links',
+          },
+          {
+            type: 'doc',
+            docId: '/category/tutorial---deploy-smart-contract',
+            position: 'left',
+            label: 'Tutorial - Deploy smart contract',
+          },
+          {
+            href: 'https://github.com/decimalteam',
+            label: 'GitHub',
+            position: 'right',
+          },
         ],
       },
       footer: {
@@ -84,39 +89,39 @@ const config = {
             title: 'Docs',
             items: [
               {
+                label: 'Useful links',
+                to: '/docs/intro',
+              },
+              {
                 label: 'Tutorial',
                 to: '/docs/category/tutorial---deploy-smart-contract',
-              },
+              }
             ],
           },
           {
             title: 'Community',
             items: [
-              // {
-              //   label: 'Stack Overflow',
-              //   href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              // },
-              // {
-              //   label: 'Discord',
-              //   href: 'https://discordapp.com/invite/docusaurus',
-              // },
-              // {
-              //   label: 'Twitter',
-              //   href: 'https://twitter.com/docusaurus',
-              // },
+              {
+                label: 'Telegram',
+                href: 'https://t.me/decimal_en',
+              },
+              {
+                label: 'Discord',
+                href: 'https://discord.com/invite/WhnrTMbrCe',
+              },
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/DecimalChain',
+              },
             ],
           },
           {
             title: 'More',
             items: [
-              // {
-              //   label: 'Blog',
-              //   to: '/blog',
-              // },
-              // {
-              //   label: 'GitHub',
-              //   href: 'https://github.com/facebook/docusaurus',
-              // },
+              {
+                label: 'GitHub',
+                href: 'https://github.com/decimalteam',
+              },
             ],
           },
         ],
