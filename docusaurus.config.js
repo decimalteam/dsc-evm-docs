@@ -10,7 +10,7 @@ const config = {
   tagline: 'EVM Documentation',
   url: 'https://decimalchain.com/',
   baseUrl: '/help/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
