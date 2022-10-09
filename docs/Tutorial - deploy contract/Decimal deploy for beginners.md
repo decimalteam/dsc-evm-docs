@@ -59,7 +59,7 @@ npx hardhat
 Select ``Create an empty hardhat.config.js`` with your keyboard and hit enter.
     Hardhat.config.js is usually located in the project root folder and contains the entirety of your setup.
 
-![Initialization of hardhat project](/img/hardhat.png)
+![Initialization of hardhat project](../../static/img/hardhat.png)
 
 ## Writing smart contract
 
