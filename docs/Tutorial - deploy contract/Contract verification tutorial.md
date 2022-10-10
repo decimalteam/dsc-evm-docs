@@ -39,7 +39,7 @@ This Tutorial has the goal to quickly teach you, how to verify deployed smart co
 ``solcLongVersion for us is 0.8.9+commit.e5eed63a``
 ``Optimizer turned off and have 200 runs``
 
-#### 2.6 Put this parameters and your contract code to verification tab like this:
+#### 2.6 Put this parameters and your flattened contract code to verification tab like this:
 
 ![Initialization of hardhat project](../../static/img/verifyFull.png)
 
