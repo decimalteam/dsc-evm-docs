@@ -7,9 +7,8 @@ sidebar_position: 1
 
 > All of the links below provide raw data that is in beta.
 
-* Console - https://devnet-dec2.console.decimalchain.com/
-* Explorer - https://devnet-dec2.explorer.decimalchain.com/ru
-* EVM feature - https://devnet-dec2.explorer.decimalchain.com/ru/evm
-* Smart contracts - https://devnet-dec2.explorer.decimalchain.com/ru/evm/contracts
-* API Explorer - https://devnet-dec2-explorer-api.decimalchain.com/api/documentation#/
-* API Console - https://devnet-dec2.console.decimalchain.com/api/documentation#/
+* Console - https://testnet.console.decimalchain.com/
+* Explorer - https://testnet.explorer.decimalchain.com/
+* Smart contracts - https://testnet.explorer.decimalchain.com/contracts
+* API Explorer - https://testnet-explorer-api.decimalchain.com/api/documentation#/
+* API Console - https://testnet-gate.decimalchain.com/api/documentation#/
