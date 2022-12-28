@@ -172,8 +172,7 @@ To deploy in a remote network such as `mainnet` or `devnet`, you need to configu
 #### Put this code into `hardhat.config.js`.
 
 ```jsx title="hardhat.config.js"
-import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox";
+require("@nomicfoundation/hardhat-toolbox");
 
 const MNEMONIC = "YOUR MNEMONIC";
 
