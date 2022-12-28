@@ -144,7 +144,7 @@ async function main() {
   });
   await exampleContract.deployed();
 
-  console.log("ExampleContract address:", example.address);
+  console.log("ExampleContract address:", exampleContract.address);
 }
 
 main()
