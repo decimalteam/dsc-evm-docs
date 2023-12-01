@@ -1,8 +1,19 @@
+---
 image: python:latest
 
 definitions:
 
   steps:
+    - step: &mirror
+        name: Sync GitHub Mirror
+        image: alpine/git:latest
+        clone:
+          enabled: false
+        script:
+          - git clone --bare git@bitbucket.org:decimalteam/dsc-evm-docs.git
+          - cd dsc-evm-docs.git
+          - git push --mirror git@github.com:decimalteam/dsc-evm-docs.git
+
     - step: &build
         name: Build
         image: node:16.14
@@ -19,21 +30,27 @@ definitions:
           - rsync -rltgoDzvO -e "ssh -p 22" $BITBUCKET_CLONE_DIR/build/* $REMOTE_USER@$REMOTE_HOST:/$WEBSITE_BIN --delete
 
 pipelines:
+  default:
+    - step: *mirror
+
   branches:
     master:
+      - step: *mirror
       - step:
           name: Deploy
           deployment: Production
           <<: *build
-          
+
     staging:
+      - step: *mirror
       - step:
           name: Deploy
           deployment: Staging
           <<: *build
 
     develop:
+      - step: *mirror
       - step:
           name: Deploy
           deployment: Test
-          <<: *build          
+          <<: *build
